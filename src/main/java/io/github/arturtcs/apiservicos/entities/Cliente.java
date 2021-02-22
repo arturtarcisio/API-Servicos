@@ -1,5 +1,6 @@
 package io.github.arturtcs.apiservicos.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,5 +25,11 @@ public class Cliente implements Serializable {
     private String cpf;
 
     @Column(name = "data_cadastro")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
+
+    @PrePersist
+    public void prePersisteLocalDate() {
+        setDataCadastro(LocalDate.now());
+    }
 }
