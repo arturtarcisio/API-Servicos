@@ -19,6 +19,6 @@ public class Servico {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
-    
+
     private BigDecimal valor;
 }
